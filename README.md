@@ -6,38 +6,38 @@ Copie esse repositório para usar como base de projetos Flask
 
 No Git Bash podemos executar o comando:
 
-'''
+```
 git clone https://github.com/fabiogoro/flask-base
-'''
+```
 
 Isso irá copiar o repositório na pasta flask-base.
 
 Depois entramos na pasta do projeto:
 
-'''
+```
 cd flask-base
-'''
+```
 
 Então criamos o ambiente virtual com os pacotes necessário para esse projeto:
 
-'''
+```
 virtualenv venv
 source venv/Scripts/activate
 pip install -r requirements.txt
-'''
+```
 
 Depois precisamos realizar a criação do banco de dados:
 
-'''
+```
 python cria_bd.py
-'''
+```
 
 A partir daí podemos executar e visualizar o projeto.
 Para executar:
 
-'''
+```
 python controllers.py
-'''
+```
 
 
 ## Estrutura
