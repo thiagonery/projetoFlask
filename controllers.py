@@ -2,18 +2,14 @@
 
 from aplicacao import app
 from flask import render_template
-from banco import bd
+from flask import redirect
+from flask import request
+from models import Mensagem
 
 
 @app.route('/')
 def index():
-    ## Usamos o objeto retornado por bd() para realizar comandos sql
-    sql = '''select usuario, texto from mensagens order by id desc'''
-    cur = bd().execute(sql)
-    ## Montamos dicionário dicionários com os resultados da consulta para passar para a view
-    mensagens = []
-    for usuario, texto in cur.fetchall(): # fetchall() gera uma lista com os resultados:
-        mensagens.append({'usuario': usuario, 'texto': texto})
+    mensagens = Mensagem.recupera_todas()
 
     ## Insere opções no menu
     menu = []
@@ -44,6 +40,13 @@ def mensagem():
     context = {'titulo': 'Escrever mensagem',
             'menu': menu}
     return render_template('mensagem.html', **context)
+
+
+@app.route('/mensagem/gravar', methods=['POST'])
+def gravar_mensagem():
+    mensagem = Mensagem(request.form['usuario'], request.form['texto'])
+    mensagem.gravar()
+    return redirect('/')
 
 
 app.run()
