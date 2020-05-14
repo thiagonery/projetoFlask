@@ -4,14 +4,14 @@
 
 {% block conteudo %}
 
-<form>
+<form action='/mensagem/gravar' method='post'>
   <p>
     <label for='usuario'>Usuário:</label>
-    <input id='usuario' type='text'>
+    <input id='usuario' type='text' name='usuario'>
   </p>
   <p>
     <label for='texto'>Mensagem:</label>
-    <textarea id='texto'></textarea>
+    <textarea id='texto' name='texto'></textarea>
   </p>
   <p>
     <input type='submit' value='Enviar'>
